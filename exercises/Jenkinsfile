@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    stages{
+        stage("Clean Up"){
+            steps{
+                echo "========executing Clean Up========"
+                deleteDir()
+            }
+        }
+        stage("Clone Repository"){
+            steps{
+                echo "========executing Clone Repository========"
+                sh "git clone https://github.com/addamstj/simple-java-maven-app.git"
+            }
+        }    
+        stage("Build"){
+            steps{
+                echo "========executing Build========"
+                dir("simple-java-maven-app"){
+                    sh "mvn clean install"
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                echo "========executing Test========"
+                dir("simple-java-maven-app"){
+                    sh "mvn test"
+                }
+            }
+        }
+    }
+}

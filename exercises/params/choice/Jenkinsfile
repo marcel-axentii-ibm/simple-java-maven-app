@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+
+    parameters{
+        choice(name: "deployEnv", choices: ["TEST", "DEV", "QA", "PRE-PROD", "PROD"], description: "Which env to deploy to?")
+    }
+
+    stages{
+        stage("Demo"){
+            steps{
+                echo "Choice environment is set to: ${params.deployEnv}"
+            }
+        }
+    }
+    
+}

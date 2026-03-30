@@ -5,6 +5,13 @@ pipeline{
         stage("Demo"){
             steps{ 
                 myFunction("Hello from myFunction!")
+
+                sh """
+                    echo "This is a shell command"
+                    echo "You can run multiple commands in a single sh step"
+                    echo "Just like this!"
+                    
+                """
             }
         }
     }   

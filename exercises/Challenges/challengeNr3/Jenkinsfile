@@ -3,7 +3,7 @@ pipeline{
 
     parameters{
         string(name: 'deployName', defaultValue: 'Name', description: 'Custom deployment name')
-        list(name: 'choiceAZ', defaultValue: ["EU-WEST-2A", "EU-WEST-2B", "EU-WEST-2C"], description: 'Select which AZ to deploy')
+        choice(name: 'choiceAZ', choices: ["EU-WEST-2A", "EU-WEST-2B", "EU-WEST-2C"], description: 'Select which AZ to deploy')
         booleanParam(name: 'confirmDeploy', defaultValue: false, description: 'Deploy the application?')
     }
 
